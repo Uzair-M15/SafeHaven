@@ -1,0 +1,4 @@
+
+
+class MissingRequiredFile(FileNotFoundError):
+    pass
