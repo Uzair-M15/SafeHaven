@@ -1,6 +1,7 @@
-
+from kivy.uix.accordion import ObjectProperty
 from kivy.uix.widget import Widget
 
 
 class LoginScreen(Widget):
-    pass
+    firstName = ObjectProperty(None)
+    lastName = ObjectProperty(None)

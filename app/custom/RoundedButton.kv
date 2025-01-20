@@ -1,0 +1,33 @@
+<RoundedButton@Widget>
+    color : 0.97 , 0.97 , 0.97 , 1
+    cornerradius : [(20 , 20) , (20 , 20) , (20 , 20) , (20 , 20)]
+    text : 'button'
+    textcolor : 66/255, 161/255, 245/255 , 1
+    bordercolor : 66/255, 161/255, 245/255 , 1
+    borderthickness : 4
+    
+    FloatLayout:
+        id : origin
+        pos : root.pos
+        size : root.size
+        canvas.before:
+            Color : 
+                rgba : root.bordercolor
+            RoundedRectangle: 
+                size : root.width , root.height
+                radius: root.cornerradius
+                pos : origin.pos[0] - root.borderthickness , origin.pos[1] - root.borderthickness
+            Color: 
+                rgba : root.color
+            RoundedRectangle:
+                size : root.size
+                radius: root.cornerradius
+                pos : origin.pos
+        
+        Label:
+            id : text
+            color : root.textcolor
+            text : root.text
+            bold: True
+            pos : origin.pos
+            size_hint : 1 , 1

@@ -5,7 +5,7 @@ import Login
 
 class SafeHavenApp(App):
     def build(self):
-        if os.path.isfile("user.json"):
+        if os.path.isfile("session/user.json"):
             pass
         else:
             return Login.LoginScreen()
