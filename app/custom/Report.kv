@@ -1,0 +1,34 @@
+
+#:include RoundedButton.kv
+
+<Report@Widget>:
+    size_hint : 1 , 0.09
+    type : ''
+    icon_src : ''
+    alert_message : ''
+
+    canvas.before:
+        Color :
+            rgba : 0.93 , 0.93 , 0.93 , 1
+        RoundedRectangle:
+            size : self.size
+            pos : self.pos
+            radius : [(20 , 20), (20 , 20), (20 , 20), (20 , 20)]
+            
+
+    RelativeLayout:
+        size : root.size
+        pos : root.pos
+        
+        Image : 
+            size_hint : root.size_hint[1] , root.size_hint[1]
+            pos : 0 , 0
+            source : root.icon_src
+        
+        Label:
+            text : root.alert_message
+        
+        RoundedButton:
+            text : 'Confirm'
+            size_hint : 0.1 , 0.05
+        

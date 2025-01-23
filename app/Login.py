@@ -1,4 +1,4 @@
-from kivy.uix.accordion import ObjectProperty
+from kivy.properties import ObjectProperty
 from kivy.uix.widget import Widget
 
 

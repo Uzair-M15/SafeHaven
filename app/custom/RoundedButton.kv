@@ -1,10 +1,14 @@
+#:kivy 2.3.0
 <RoundedButton@Widget>
     color : 0.97 , 0.97 , 0.97 , 1
-    cornerradius : [(20 , 20) , (20 , 20) , (20 , 20) , (20 , 20)]
+    corner_radius : [(20 ,20) , (20 , 20) , (20 , 20) , (20 , 20)]
     text : 'button'
     textcolor : 66/255, 161/255, 245/255 , 1
     bordercolor : 66/255, 161/255, 245/255 , 1
+    selected_color : 141/255, 200/255, 252/255 , 1
     borderthickness : 4
+    content_text_size : None
+    selected : False
     
     FloatLayout:
         id : origin
@@ -15,19 +19,20 @@
                 rgba : root.bordercolor
             RoundedRectangle: 
                 size : root.width , root.height
-                radius: root.cornerradius
+                radius: [(20 ,20) , (20 , 20) , (20 , 20) , (20 , 20)]
                 pos : origin.pos[0] - root.borderthickness , origin.pos[1] - root.borderthickness
             Color: 
-                rgba : root.color
+                rgba : root.selected_color if root.selected == True else root.color 
             RoundedRectangle:
                 size : root.size
-                radius: root.cornerradius
+                radius: [(20 ,20) , (20 , 20) , (20 , 20) , (20 , 20)]
                 pos : origin.pos
         
         Label:
             id : text
-            color : root.textcolor
+            color : root.textcolor if root.selected == False else 1 , 1 , 1 , 1
             text : root.text
             bold: True
             pos : origin.pos
             size_hint : 1 , 1
+            font_size: root.content_text_size if root.content_text_size!=None else 12
