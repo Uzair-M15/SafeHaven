@@ -4,7 +4,6 @@ import os
 from lib import shErrors
 import json
 from supabase import create_client , Client
-import geocoder
 
 def checkKeys():
     """Checks for the presence of the api key in SafeHave/keys.json. If api keys are present return true"""
@@ -14,7 +13,7 @@ def checkKeys():
             keys = json.load(file)
             file.close()
             
-            if not(keys["tomtom"] == "") and not(keys["supabase"] == ""):
+            if not(keys["supabase"] == ""):
                 return True
             return False
         except BaseException as e:
@@ -31,13 +30,23 @@ def getkeys():
     else:
         raise shErrors.KeysNotFound()
 
+def geturls():
+    if os.path.isfile('/session/urls.json'):
+        file = open('session/urls.json')
+        urls = json.load(file)
+        file.close()
+        return urls
+    
+    else:
+        raise shErrors.MissingRequiredFile()    
+
 class Manager:
     """Abstraction object for making supabase calls and requests"""
+
     def __init__(self):
         self.keys = getkeys()
         
         #Initialise supabase client
-        self.urls = json.load(open("session/keys.json"))
+        self.urls = json.load(open("session/urls.json"))
         self.supabase: Client = create_client(self.urls["supabase"] , self.keys["supabase"])
-
-        
+        self.supabase.options.function_client_timeout = 60

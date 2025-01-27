@@ -1,6 +1,6 @@
 supabase
 kivy
-pycurl
+
 #osmnx dep
 bottleneck
 cartopy
