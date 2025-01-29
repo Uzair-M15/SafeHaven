@@ -1,6 +1,6 @@
 #:kivy 2.3.0
 #:import Window kivy.core.window.Window
-#:include custom/RoundedButton.kv
+#:include app_src/custom/RoundedButton.kv
 
 
 <Label> :
@@ -15,8 +15,6 @@
 
 
 <LoginScreen>:
-    
-    context : lblTitle
     username : edtUsername
     firstName : edtFirstName
     lastName : edtLastName
@@ -57,19 +55,14 @@
         size : root.size
         
         Image:
-            source: '../assets/logo/safehaven_logo.png'
+            source: 'assets/logo/safehaven_logo.png'
             size_hint : 0.3 , 0.3
             pos_hint: {"x" : 0.35 , "y" : 0.7}
-        
-        Label:
-            id:lblTitle
-            pos_hint : {"center_x" : 0.5 , "center_y" : 0.575}
-            font_size: self.height/10 if screen_widget.width>screen_widget.height else self.width/10
         
         Label :
             id : lblUsername
             pos_hint: {"x" : 0.3 , "y" : 0.45}
-            text : 'First Name'
+            text : 'Username'
             font_size: self.height/10 if screen_widget.width>screen_widget.height else self.width/10
         
         TextInput :
@@ -111,8 +104,6 @@
             text : 'Submit'
             pos_hint: {"x" : 0.5, "y" : 0.21}
             content_text_size: self.height/5 if screen_widget.width>screen_widget.height else self.width/5
-            on_enter: self.selected=True
-            on_leave: self.selected=False
 
 
 <FeedScreen>:

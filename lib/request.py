@@ -66,12 +66,12 @@ class Manager:
         if center == None:
             try:
                 center = self.osmnx.geocode(self.settings.get_field("location"))
-                return [1 , folium.Map(location = [center[0] , center[1]] , tiles='CartoDB positron' , zoom_start=20)]
+                return [1 , folium.Map(location = [center[0] , center[1]] , tiles=self.settings.get_field("map_type") , zoom_start=20)]
             except Exception as e:
                 print(e)
                 return [0 , 'Your location could not be found']
         else:
-            return [1 , folium.Map(location = [center[0] , center[1]] , tiles='CartoDB positron' , zoom_start=20)]
+            return [1 , folium.Map(location = [center[0] , center[1]] , tiles=self.settings.get_field("map_type") , zoom_start=20)]
         
     def add_marker(self , map , coords = None , address = None , name = ''):
         marker_coords = None
