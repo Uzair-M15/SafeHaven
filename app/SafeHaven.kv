@@ -16,7 +16,8 @@
 
 <LoginScreen>:
     
-    
+    context : lblTitle
+    username : edtUsername
     firstName : edtFirstName
     lastName : edtLastName
     screen_widget : screen_widget
@@ -59,36 +60,51 @@
             source: '../assets/logo/safehaven_logo.png'
             size_hint : 0.3 , 0.3
             pos_hint: {"x" : 0.35 , "y" : 0.7}
-
+        
+        Label:
+            id:lblTitle
+            pos_hint : {"center_x" : 0.5 , "center_y" : 0.575}
+            font_size: self.height/10 if screen_widget.width>screen_widget.height else self.width/10
+        
         Label :
-            id : lblFirstName
+            id : lblUsername
             pos_hint: {"x" : 0.3 , "y" : 0.45}
             text : 'First Name'
             font_size: self.height/10 if screen_widget.width>screen_widget.height else self.width/10
         
         TextInput :
-            id : edtFirstName
+            id : edtUsername
             pos_hint: {"x" : 0.5 , "y" : 0.45}
 
         Label :
-            id : lblLastName
+            id : lblFirstName
             pos_hint: {"x" : 0.3 , "y" : 0.39}
+            text : 'First Name'
+            font_size: self.height/10 if screen_widget.width>screen_widget.height else self.width/10
+        
+        TextInput :
+            id : edtFirstName
+            pos_hint: {"x" : 0.5 , "y" : 0.39}
+
+        Label :
+            id : lblLastName
+            pos_hint: {"x" : 0.3 , "y" : 0.33}
             text : 'Last Name'
             font_size: self.height/10 if screen_widget.width>screen_widget.height else self.width/10
         
         TextInput:
             id : edtLastName
-            pos_hint: {"x" : 0.5 , "y" : 0.39}
+            pos_hint: {"x" : 0.5 , "y" : 0.33}
         
         Label : 
             id : lblPassword
-            pos_hint: {"x" : 0.3 , "y" : 0.33}
+            pos_hint: {"x" : 0.3 , "y" : 0.27}
             text : 'Password'
             font_size: self.height/10 if screen_widget.width>screen_widget.height else self.width/10
         
         TextInput :
             id : edtPassword
-            pos_hint: {"x" : 0.5 , "y" : 0.33}
+            pos_hint: {"x" : 0.5 , "y" : 0.27}
         
         RoundedButton:
             size_hint: (0.1 , 0.045)

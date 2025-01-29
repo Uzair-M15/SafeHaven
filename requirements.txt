@@ -38,3 +38,4 @@ typeguard
 validate-pyproject
 
 osmnx
+webbrowser
