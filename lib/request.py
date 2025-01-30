@@ -58,8 +58,15 @@ class Manager:
         self.supabase.options.function_client_timeout = 60
         
         #Settings handler
-        self.settings = settings.handler()
+        try :
+            self.settings = settings.handler()
+        except :
+            self.settings = None
         self.osmnx = osmnx
+
+    def create_settings_handler(self):
+        if os.path.isfile('session/settings.json'):
+            self.settings = settings.handler()
 
 
     def gen_map(self , center = None) -> list:

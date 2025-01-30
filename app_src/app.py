@@ -1,17 +1,16 @@
+from kivy.uix.settings import Settings
 from kivy.uix.filechooser import ScreenManager
 import os
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.core.text import LabelBase
-from app_src import Login , Feed
+from app_src import Feed , Login , Signup , Settings
 from lib import request , crypt
 
 LabelBase.register("Lexend" , 'assets/Lexend/Lexend.ttf')
 
 
 class SafeHavenApp(App):
-            
-
     def build(self):
         return Feed.FeedScreen()
         

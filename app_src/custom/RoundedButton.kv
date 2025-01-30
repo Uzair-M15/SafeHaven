@@ -16,13 +16,13 @@
         size : root.size
         canvas.before:
             Color : 
-                rgba : root.bordercolor
+                rgba : root.bordercolor          ######################################
             RoundedRectangle: 
                 size : root.width , root.height
                 radius: [(20 ,20) , (20 , 20) , (20 , 20) , (20 , 20)]
                 pos : origin.pos[0] - root.borderthickness , origin.pos[1] - root.borderthickness
             Color: 
-                rgba : root.selected_color if root.selected == True else root.color 
+                rgba : root.color     #########################################
             RoundedRectangle:
                 size : root.size
                 radius: [(20 ,20) , (20 , 20) , (20 , 20) , (20 , 20)]
@@ -30,7 +30,7 @@
         
         Label:
             id : text
-            color : root.textcolor if root.selected == False else 1 , 1 , 1 , 1
+            color : root.textcolor
             text : root.text
             bold: True
             pos : origin.pos

@@ -1,0 +1,35 @@
+#:kivy 2.3.0
+
+<NavigationBar@Widget>:
+    FloatLayout:
+        size : root.size
+        pos : 0 , 0
+
+        FloatLayout:
+            size_hint: 1 , 0.1
+
+            canvas.before:
+                Color:
+                    rgba : 1 , 1 , 1 , 1
+                Rectangle:
+                    size : self.size
+                    pos : 0 , 0
+            
+
+            Image:
+                id : imgHome
+                source : 'assets/icons/ui/home.png'
+                size_hint_y : 0.55
+                pos_hint : {"center_x" : 0.3333333 , "center_y" : 0.5}
+            
+            Image:
+                id : imgFeed
+                source : 'assets/icons/ui/feed.png'
+                size_hint_y: 0.55
+                pos_hint: {"center_x" : 0.5 , "center_y" : 0.5}
+            
+            Image:
+                id : imgSettings
+                source : 'assets/icons/ui/setting.png'
+                size_hint_y : 0.55
+                pos_hint: {"center_x" : 0.6666666 , "center_y" : 0.5}

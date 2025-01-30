@@ -1,6 +1,7 @@
 #:kivy 2.3.0
 #:import Window kivy.core.window.Window
 #:include app_src/custom/RoundedButton.kv
+#:include app_src/custom/Navigation.kv
 
 
 <Label> :
@@ -14,8 +15,7 @@
     font_name: 'Lexend'
 
 
-<LoginScreen>:
-    username : edtUsername
+<SignupScreen>:
     firstName : edtFirstName
     lastName : edtLastName
     screen_widget : screen_widget
@@ -101,9 +101,9 @@
         
         RoundedButton:
             size_hint: (0.1 , 0.045)
-            text : 'Submit'
-            pos_hint: {"x" : 0.5, "y" : 0.21}
-            content_text_size: self.height/5 if screen_widget.width>screen_widget.height else self.width/5
+            text : 'Signup'
+            pos_hint: {"center_x" : 0.5, "y" : 0.2}
+            content_text_size: self.height/6 if screen_widget.width>screen_widget.height else self.width/6
 
 
 <FeedScreen>:
@@ -121,50 +121,140 @@
             Rectangle:
                 pos : 0 , 0
                 size : root.size
+
     FloatLayout:
         
         pos : 0 , 0
         size : root.size
-        
+
+        NavigationBar:
+            size : root.size
+            pos: 0 , 0
+
         Widget:
             size_hint: (1 , 0.135)
             pos_hint: {"x" : 0, "y" : 0.865}
             canvas:
                 Color:
                     rgba : 1 , 1 , 1, 1
-                Rectangle:
+                RoundedRectangle:
                     size : self.size
                     pos : self.pos
+                    radius : [(20 ,20) , (20 , 20) , (20 , 20) , (20 , 20)]
+
+
+        FloatLayout:
+        
+            size : root.size
+            pos : 0 , 0
+            TextInput:
+                size_hint : 0.9 , 0.04
+                pos_hint : {"x" : 0.01 , "y" : 0.94}
+            Image:
+                id : imgSearch
+                size_hint: (0.04 , 0.04)
+                pos_hint : {"x" : 0.93 , "y" : 0.94}
+                source: 'assets/icons/ui/search.png'
 
         RoundedButton:
             text : 'Fire'
             size_hint: (0.1 , 0.045)
-            pos_hint: {"x" : 0.225 , "y" : 0.9}
-            content_text_size: self.height/5 if screen_widget.width>screen_widget.height else self.width/5
+            pos_hint: {"x" : 0.1 , "y" : 0.88}
+            content_text_size: self.height/2 if screen_widget.width>screen_widget.height else self.width/6
         RoundedButton:
             text : 'Flood'
             size_hint: (0.1 , 0.045)
-            pos_hint : {"x" : 0.335 , "y" : 0.9}
-            content_text_size: self.height/5 if screen_widget.width>screen_widget.height else self.width/5
+            pos_hint : {"x" : 0.21 , "y" : 0.88}
+            content_text_size: self.height/2 if screen_widget.width>screen_widget.height else self.width/6
         RoundedButton:
             text : 'Tsunami'
             size_hint: (0.1 , 0.045)
-            pos_hint : {"x" : 0.445 , "y" : 0.9}
-            content_text_size: self.height/5 if screen_widget.width>screen_widget.height else self.width/5
+            pos_hint : {"x" : 0.32 , "y" : 0.88}
+            content_text_size: self.height/2 if screen_widget.width>screen_widget.height else self.width/6
         RoundedButton:
             text : 'Hurricane'
             size_hint: (0.1 , 0.045)
-            pos_hint : {"x" : 0.555 , "y" : 0.9}
-            content_text_size: self.height/5 if screen_widget.width>screen_widget.height else self.width/5
+            pos_hint : {"x" : 0.43 , "y" : 0.88}
+            content_text_size: self.height/2 if screen_widget.width>screen_widget.height else self.width/6
         RoundedButton:
             text:"Earthquake"
             size_hint: (0.1,  0.045)
-            pos_hint:  {"x" : 0.665 , "y" : 0.9}
-            content_text_size: self.height/5 if screen_widget.width>screen_widget.height else self.width/5
+            pos_hint:  {"x" : 0.54 , "y" : 0.88}
+            content_text_size: self.height/2 if screen_widget.width>screen_widget.height else self.width/6
         RoundedButton:
             text : 'Other'
             size_hint: (0.1 , 0.045)
-            pos_hint : {"x" : 0.775 , "y" : 0.9}
-            content_text_size: self.height/5 if screen_widget.width>screen_widget.height else self.width/5
+            pos_hint : {"x" : 0.65 , "y" : 0.88}
+            content_text_size: self.height/2 if screen_widget.width>screen_widget.height else self.width/6
 
         #populate with reports
+
+<LoginScreen>:
+    
+
+    canvas.before:
+        Color:
+            rgba : 0.9 , 0.9 , 0.9 , 1
+        Rectangle : 
+            size : self.width , self.height
+        Color:
+            rgba: 66/255, 161/255, 245/255 , 1
+        RoundedRectangle: 
+            size : self.width/2 , self.height/2
+            pos : self.width/4 - self.width/48 , self.height/4 - self.height/8 - self.height/48
+            radius: [(20 ,20) , (20 , 20) , (20 , 20) , (20 , 20)]
+
+        Color:
+            rgba: 1 , 1 , 1 , 1
+        RoundedRectangle: 
+            size : self.width/2 , self.height/2
+            pos : self.width/4 , self.height/4 - self.height/8
+            radius: [(20 ,20) , (20 , 20) , (20 , 20) , (20 , 20)]
+
+    Widget:
+        id : screen_widget
+        pos : 0 , 0
+        size_hint : 1 , 1
+        canvas :
+            Color :
+                rgba : 1 , 0 , 0 , 0
+            Rectangle:
+                size : self.size
+                pos : self.pos
+
+    FloatLayout:
+        cols : 2
+        size : root.size
+        
+        Image:
+            source: 'assets/logo/safehaven_logo.png'
+            size_hint : 0.3 , 0.3
+            pos_hint: {"x" : 0.35 , "y" : 0.7}
+        
+        Label :
+            id : lblUsername
+            pos_hint: {"x" : 0.3 , "y" : 0.39}
+            text : 'Username'
+            font_size: self.height/10 if screen_widget.width>screen_widget.height else self.width/10
+        
+        TextInput :
+            id : edtUsername
+            pos_hint: {"x" : 0.5 , "y" : 0.39}
+        
+        Label : 
+            id : lblPassword
+            pos_hint: {"x" : 0.3 , "y" : 0.33}
+            text : 'Password'
+            font_size: self.height/10 if screen_widget.width>screen_widget.height else self.width/10
+        
+        TextInput :
+            id : edtPassword
+            pos_hint: {"x" : 0.5 , "y" : 0.33}
+        
+        RoundedButton:
+            size_hint: (0.1 , 0.045)
+            text : 'Login'
+            pos_hint: {"center_x" : 0.5, "y" : 0.2}
+            content_text_size: self.height/6 if screen_widget.width>screen_widget.height else self.width/6
+
+#<SettingsScreen>:
